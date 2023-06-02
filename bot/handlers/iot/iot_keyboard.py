@@ -1,6 +1,6 @@
 from aiogram.types import Message
 
-from bot.keyboards.iot import iot
+from bot.keyboards.iot import get_iot_markup
 from loader import dp, _
 from models import User
 import requests
@@ -9,7 +9,7 @@ from aiogram import types
 import aiofiles
 
 @dp.message_handler(i18n_text='Take picture', is_admin=True)
-@dp.message_handler(commands=['Take picture'], is_admin=True)
+@dp.message_handler(commands=['take_picture'], is_admin=True)
 async def _take_picture(message: Message):
     stream_url = 'http://raspberrypi.local:5000/video_feed'
     async with aiohttp.ClientSession() as session:
