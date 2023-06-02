@@ -9,6 +9,7 @@ from models import User
 from services.users import edit_user_language
 
 
+
 @dp.callback_query_handler(Regexp('^lang_(\w\w)$'))
 async def _change_language(callback_query: CallbackQuery, regexp: Regexp, user: User):
     language = regexp.group(1)

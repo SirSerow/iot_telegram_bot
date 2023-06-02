@@ -4,6 +4,7 @@ from aiogram.types import Message, InputFile
 
 from loader import dp, bot, config, _
 from services.users import count_users, get_users
+from bot.keyboards.iot import get_iot_markup
 
 
 @dp.message_handler(i18n_text='Export users 📁', is_admin=True)
@@ -46,3 +47,8 @@ async def _active_users_count(message: Message):
             pass
 
     await message.answer(_('Active users: {count}').format(count=count))
+
+@dp.message_handler(i18n_text='IOT', is_admin=True)
+@dp.message_handler(commands=['iot'], is_admin=True)
+async def _users_count(message: Message):
+    await message.answer(_('Choose an action from the menu 👇'), reply_markup=get_iot_markup())
